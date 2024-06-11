@@ -9,46 +9,9 @@ import llava.mm_utils
 from llava.conversation import conv_templates
 from llava.model.builder import load_pretrained_model
 from llava.utils import disable_torch_init
+from llavaguard.eval_utils import load_data, get_model_dir
 from llavaguard.evaluation_metrics_calculator import EvaluationMetricsCalculator
 from llavaguard.inference import run_llava
-
-
-def get_model_dir(run_name):
-    if os.path.exists(run_name):
-        return run_name
-    if os.path.exists(f'/common-repos/LlavaGuard/models/{run_name}'):
-        return f'/common-repos/LlavaGuard/models/{run_name}'
-    elif os.path.exists(f'output/models/{run_name}'):
-        return f'output/models/{run_name}'
-    else:
-        return None
-
-
-def load_data(data_path, infer_train_data=False):
-    dd = {}
-    paths = {}
-    if data_path.endswith('.json'):
-        dd = {data_path.split('/')[-1].split('.')[0]: json.load(open(data_path))}
-        paths = {data_path.split('/')[-1].split('.')[0]: data_path}
-        return paths, dd
-
-    for p, type in [(data_path, 'test'), (data_path, 'eval'), (data_path, 'train')]:
-        if type == 'train' and not infer_train_data:
-            continue
-        if not p.endswith('/'):
-            p += '/'
-        p += f'{type}.json'
-        if os.path.exists(p):
-            dd[type] = json.load(open(p))
-        elif os.path.exists(f'/common-repos/LlavaGuard/data/{p}'):
-            dd[type] = json.load(open(f'/common-repos/LlavaGuard/data/{p}'))
-        elif os.path.exists(f'output/data/{p}'):
-            dd[type] = json.load(open(f'output/data/{p}'))
-        else:
-            raise FileNotFoundError(f'No data found for {p}')
-        paths[type] = p
-
-    return paths, dd
 
 
 def eval_loop(lora_dir=None, model_base='liuhaotian/llava-v1.5-13b',
@@ -59,7 +22,7 @@ def eval_loop(lora_dir=None, model_base='liuhaotian/llava-v1.5-13b',
     print(f'Training dataset: {data_path_train}')
     model_name = llava.mm_utils.get_model_name_from_path(model_base)
     root = '/common-repos/LlavaGuard' if os.path.exists('/common-repos/LlavaGuard') else '/output'
-    paths, data = load_data(data_path_train, data_path_eval)
+    paths, data = load_data(data_path)
 
     if lora_dir is not None and lora_dir != 'None':
         # load lora models

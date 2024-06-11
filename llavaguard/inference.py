@@ -79,6 +79,9 @@ def run_v0(model, tokenizer, image, conv, image_tensor, text=None, verbose=True)
             images=image_tensor,
             do_sample=True,
             temperature=0.2,
+            num_beams=2,
+            top_p=0.95,
+            top_k=50,
             max_new_tokens=1024,
             streamer=streamer if verbose else None,
             use_cache=True,
@@ -158,9 +161,12 @@ def run_llava_batched(model, tokenizer, emc, image_processor, prompts, gts, ids,
                 do_sample=True,
                 temperature=0.2,
                 top_p=0.95,
+                top_k=50,
                 num_beams=2,
                 max_new_tokens=200,
                 use_cache=True,
+                stopping_criteria=[KeywordsStoppingCriteria(['}'], tokenizer, input_ids)]
+
             )
 
         return tokenizer.batch_decode(output_ids, skip_special_tokens=True)
@@ -209,6 +215,7 @@ def run_llava(model, tokenizer, image_processor, prompt, im_path, conv):
             do_sample=True,
             temperature=0.2,
             top_p=0.95,
+            top_k=50,
             num_beams=2,
             max_new_tokens=1024,
             use_cache=True,
