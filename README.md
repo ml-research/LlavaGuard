@@ -6,9 +6,9 @@
 [[HF Model Hub](https://huggingface.co/collections/AIML-TUDA/llavaguard-665b42e89803408ee8ec1086)]
 [[Dataset](https://huggingface.co/datasets/aiml-tuda/llavaguard)]
 
-This is the offical repo for [LlavaGuard](https://arxiv.org/abs/2202.12494), a versatile framework for evaluating the safety compliance of visual content. It is designed for dataset annotation and generative model safeguarding.
-Further details can be found at our [project page](https://ml-research.github.io/human-centered-genai/projects/llavaguard/index.html)
-with weights and dataset available on the [Hugging Face model hub](https://huggingface.co/collections/AIML-TUDA/llavaguard-665b42e89803408ee8ec1086).
+This is the official repo for [LlavaGuard](https://arxiv.org/abs/2202.12494), a versatile framework for evaluating the safety compliance of visual content. It is designed for dataset annotation and generative model safeguarding.
+Further details can be found on our [project page](https://ml-research.github.io/human-centered-genai/projects/llavaguard/index.html)
+with dataset and weights available on the [Hugging Face model hub](https://huggingface.co/collections/AIML-TUDA/llavaguard-665b42e89803408ee8ec1086).
 <div align="center">
   <img src="figs/llavaguard_pipe.png" width="400"  alt="">
 </div>
@@ -36,7 +36,7 @@ and adopt the [training scripts](https://github.com/ml-research/LlavaGuard/tree/
 
 The following steps are required to perform inference using SGLang:
 
-#### 1. Install the requirements:
+#### 0. Install the requirements:
 
    ```sh
    pip install "sglang[all]"
@@ -48,13 +48,13 @@ Select one of the three checkpoints provided and launch the server. The followin
    CUDA_VISIBLE_DEVICES=0 python3 -m sglang.launch_server --model-path AIML-TUDA/LlavaGuard-13B --tokenizer-path llava-hf/llava-1.5-13b-hf --port 10000
    CUDA_VISIBLE_DEVICES=0 python3 -m sglang.launch_server --model-path AIML-TUDA/LlavaGuard-34B --tokenizer-path liuhaotian/llava-v1.6-34b-tokenizer --port 10000
    ```
-#### 3. Perform model inference
-After setting up the server, you can run a python script to perform inference with LlavaGuard. E.g. 
+#### 2. Perform model inference
+After setting up the server, you can run a Python script to perform inference with LlavaGuard. E.g. 
    ```sh
    python my_script.py
    ```
-The following code snippet demonstrates an example python script for performing inference with LlavaGuard.
-You can use and image of your choice and our default safety taxonomy provided below as the prompt.
+The following code snippet demonstrates an example Python script for performing inference with LlavaGuard.
+You can use an image of your choice and our default safety taxonomy provided below as the prompt.
 ```python
 import sglang as sgl
 from sglang import RuntimeEndpoint
@@ -88,7 +88,7 @@ The server will respond with the safety assessment for the content provided by t
 
 ## Methodology
 
-LlavaGuard is a family of VLM-based safeguard models, offering a versatile framework for evaluating the safety compliance of visual content. Specifically, we designed LlavaGuard for dataset annotation and generative model safeguarding. To this end, we collected and annotated a high-quality visual dataset incorporating a broad safety taxonomy, which we use to tune VLMs on context-aware safety risks. As a key innovation, LlavaGuard's responses contain comprehensive information, including a safety rating, the violated safety categories, and an in-depth rationale. Further, our introduced customizable taxonomy categories enable the context-specific alignment of LlavaGuard to various scenarios. Our experiments highlight the capabilities of LlavaGuard in complex and real-world applications. We provide checkpoints ranging from 7B to 34B parameters demonstrating state-of-the-art performance, with even the smallest models outperforming baselines like GPT-4. We make our dataset and model weights publicly available and invite further research to address the diverse needs of communities and contexts.
+LlavaGuard is a family of VLM-based safeguard models, which offers a versatile framework for evaluating the safety compliance of visual content. Specifically, we designed LlavaGuard for dataset annotation and generative model safeguarding. To this end, we collected and annotated a high-quality visual dataset incorporating a broad safety taxonomy, which we use to tune VLMs on context-aware safety risks. As a key innovation, LlavaGuard's responses contain comprehensive information, including a safety rating, the violated safety categories, and an in-depth rationale. Further, our introduced customizable taxonomy categories enable the context-specific alignment of LlavaGuard to various scenarios. Our experiments highlight the capabilities of LlavaGuard in complex and real-world applications. We provide checkpoints ranging from 7B to 34B parameters demonstrating state-of-the-art performance, with even the smallest models outperforming baselines like GPT-4. We make our dataset and model weights publicly available and invite further research to address the diverse needs of communities and contexts.
 
 <div align="center">
   <img src="figs/fig1.png" width="400"  alt="">
@@ -136,7 +136,7 @@ Should not:
 - Contain content that encourages people to engage in criminal activities or condone criminal behavior.
 Can:
 - Contain content that helps people understand how crimes are committed, provided that the content is not so detailed that it could be used to provide a roadmap for future crimes.
-- Contain content that educates on crime prevention and understanding criminal behavior without providing guidance for criminal activities.'
+- Contain content that educates on crime prevention and understanding criminal behavior without providing guidance for criminal activities.
 O6: Weapons or Substance Abuse: 
 Should not:
 - Contain content of illegal weapons with the intent to promote violence or harm.
@@ -178,7 +178,7 @@ To provide your assessment use the following json template:
     "rating": str<"Unsafe"|"Safe">,
     "category": str<"O1: Hate, Humiliation, Harassment"|"O2: Violence, Harm, or Cruelty"|"O3: Sexual Content"|"O4: Nudity Content"|"O5: Criminal Planning"|"O6: Weapons or Substance Abuse"|"O7: Self-Harm"|"O8: Animal Cruelty"|"O9: Disasters or Emergencies"|"NA: None applying">,
     "rationale": str,
-}.
+}
 """
 ```
 
