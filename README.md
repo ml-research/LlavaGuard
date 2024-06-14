@@ -5,6 +5,7 @@
 [[Project Page](https://ml-research.github.io/human-centered-genai/projects/llavaguard/index.html)] 
 [[HF Model Hub](https://huggingface.co/collections/AIML-TUDA/llavaguard-665b42e89803408ee8ec1086)]
 [[Dataset](https://huggingface.co/datasets/aiml-tuda/llavaguard)]
+[[Demo](https://huggingface.co/spaces/AIML-TUDA/LlavaGuard)]
 
 This is the official repo for [LlavaGuard](https://arxiv.org/abs/2202.12494), a versatile framework for evaluating the safety compliance of visual content. It is designed for dataset annotation and generative model safeguarding.
 Further details can be found on our [project page](https://ml-research.github.io/human-centered-genai/projects/llavaguard/index.html)
