@@ -28,22 +28,17 @@ with dataset and weights available on the [Hugging Face model hub](https://huggi
 
 
 ## Usage
-The provided LlavaGuard weights are compatible for inference via [SGLang](https://github.com/sgl-project/sglang) as described below.
-The models are pre-trained on our dataset and can be used for further tuning either via LoRAs or full training.
-For tuning, you can use our [docker image](https://github.com/ml-research/LlavaGuard/tree/main/docker/llavaguard/Dockerfile) 
-and adopt the [training scripts](https://github.com/ml-research/LlavaGuard/tree/main/scripts) provided in our repository.
+The provided LlavaGuard weights are compatible for inference via [SGLang](https://github.com/sgl-project/sglang) as described below. 
+The models are pre-trained on our dataset and can be used for further tuning either via LoRAs or full training. We also provide [training scripts](https://github.com/ml-research/LlavaGuard/tree/main/scripts) in our repository.
+You can use the following [docker file for infernce](https://github.com/sgl-project/sglang/blob/main/docker/Dockerfile). For training, a working LLaVA installation is required, e.g., see our [docker file for tuning](https://github.com/ml-research/LlavaGuard/tree/main/docker/llavaguard/Dockerfile).
 
 ### Infernce via SGLang
 
-The following steps are required to perform inference using SGLang:
+For inference, you use the above-mentioned [sglang docker](https://github.com/sgl-project/sglang/blob/main/docker/Dockerfile) and proceed with step 1.
+Otherwise, you can also install sglang via pip or from source [see here](https://github.com/sgl-project/sglang).
 
-#### 0. Install the requirements:
-
-   ```sh
-   pip install "sglang[all]"
-   ```
 #### 1. Launch LlavaGuard Server
-Select one of the three checkpoints provided and launch the server. The following code snippet demonstrates how to load the 7B, 13B, and 34B checkpoints respectively.
+Select one of the three checkpoints provided and launch the server. The following code snippet demonstrates how to load the 7B, 13B, and 34B checkpoints, respectively.
    ```sh
    CUDA_VISIBLE_DEVICES=0 python3 -m sglang.launch_server --model-path AIML-TUDA/LlavaGuard-7B --tokenizer-path llava-hf/llava-1.5-7b-hf --port 10000
    CUDA_VISIBLE_DEVICES=0 python3 -m sglang.launch_server --model-path AIML-TUDA/LlavaGuard-13B --tokenizer-path llava-hf/llava-1.5-13b-hf --port 10000
