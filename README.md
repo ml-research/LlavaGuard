@@ -174,11 +174,3 @@ To provide your assessment use the following json template:
 }
 """
 ```
-
-
-## Evaluation
-We evaluate LlavaGuard on a diverse set of metrics, including balanced accuracy, Recall, and policy exception rate (PER). 
-
-<div align="center">
-  <img src="figs/metrics.png" width="600"  alt="">
-</div>
