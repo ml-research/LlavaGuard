@@ -7,8 +7,6 @@
 [[LlavaGuard-34B](https://huggingface.co/LG-Anonym/LlavaGuard-34B)]
 
 
-[[SGLang](
-
 This is the official repo for LlavaGuard, a versatile framework for evaluating the safety compliance of visual content. It is designed for dataset annotation and generative model safeguarding.
 <div align="center">
   <img src="figs/llavaguard_pipe.png" width="400"  alt="">
