@@ -1,15 +1,15 @@
 # LlavaGuard
 *LLAVAGUARD: VLM-based Safeguard for Vision Dataset Curation and Safety Assessment*
 
-[[Paper](https://arxiv.org/abs/2406.05113)] 
-[[Project Page](https://ml-research.github.io/human-centered-genai/projects/llavaguard/index.html)] 
-[[HF Model Hub](https://huggingface.co/collections/AIML-TUDA/llavaguard-665b42e89803408ee8ec1086)]
-[[Dataset](https://huggingface.co/datasets/aiml-tuda/llavaguard)]
-[[Demo](https://huggingface.co/spaces/AIML-TUDA/LlavaGuard)]
+[[Dataset](https://huggingface.co/datasets/LG-Anonym/LlavaGuard-Dataset)]
+[[LlavaGuard-7B](https://huggingface.co/LG-Anonym/LlavaGuard-7B)]
+[[LlavaGuard-13B](https://huggingface.co/LG-Anonym/LlavaGuard-13B)]
+[[LlavaGuard-34B](https://huggingface.co/LG-Anonym/LlavaGuard-34B)]
 
-This is the official repo for [LlavaGuard](https://arxiv.org/abs/2406.05113), a versatile framework for evaluating the safety compliance of visual content. It is designed for dataset annotation and generative model safeguarding.
-Further details can be found on our [project page](https://ml-research.github.io/human-centered-genai/projects/llavaguard/index.html)
-with dataset and weights available on the [Hugging Face model hub](https://huggingface.co/collections/AIML-TUDA/llavaguard-665b42e89803408ee8ec1086).
+
+[[SGLang](
+
+This is the official repo for LlavaGuard, a versatile framework for evaluating the safety compliance of visual content. It is designed for dataset annotation and generative model safeguarding.
 <div align="center">
   <img src="figs/llavaguard_pipe.png" width="400"  alt="">
 </div>
@@ -29,8 +29,8 @@ with dataset and weights available on the [Hugging Face model hub](https://huggi
 
 ## Usage
 The provided LlavaGuard weights are compatible for inference via [SGLang](https://github.com/sgl-project/sglang) as described below. 
-The models are pre-trained on our dataset and can be used for further tuning either via LoRAs or full training. We also provide [training scripts](https://github.com/ml-research/LlavaGuard/tree/main/scripts) in our repository.
-You can use the following [docker file for infernce](https://github.com/sgl-project/sglang/blob/main/docker/Dockerfile). For training, a working LLaVA installation is required, e.g., see our [docker file for tuning](https://github.com/ml-research/LlavaGuard/tree/main/docker/llavaguard/Dockerfile).
+The models are pre-trained on our dataset and can be used for further tuning either via LoRAs or full training. We also provide training scripts in our repository (see scripts).
+You can use the following [docker file for infernce](https://github.com/sgl-project/sglang/blob/main/docker/Dockerfile). For training, a working LLaVA installation is required, e.g., see our docker file for tuning.
 
 ### Infernce via SGLang
 
@@ -40,9 +40,9 @@ Otherwise, you can also install sglang via pip or from source [see here](https:/
 #### 1. Launch LlavaGuard Server
 Select one of the three checkpoints provided and launch the server. The following code snippet demonstrates how to load the 7B, 13B, and 34B checkpoints, respectively.
    ```sh
-   CUDA_VISIBLE_DEVICES=0 python3 -m sglang.launch_server --model-path AIML-TUDA/LlavaGuard-7B --tokenizer-path llava-hf/llava-1.5-7b-hf --port 10000
-   CUDA_VISIBLE_DEVICES=0 python3 -m sglang.launch_server --model-path AIML-TUDA/LlavaGuard-13B --tokenizer-path llava-hf/llava-1.5-13b-hf --port 10000
-   CUDA_VISIBLE_DEVICES=0 python3 -m sglang.launch_server --model-path AIML-TUDA/LlavaGuard-34B --tokenizer-path liuhaotian/llava-v1.6-34b-tokenizer --port 10000
+   CUDA_VISIBLE_DEVICES=0 python3 -m sglang.launch_server --model-path LG-Anonym/LlavaGuard-7B --tokenizer-path llava-hf/llava-1.5-7b-hf --port 10000
+   CUDA_VISIBLE_DEVICES=0 python3 -m sglang.launch_server --model-path LG-Anonym/LlavaGuard-13B --tokenizer-path llava-hf/llava-1.5-13b-hf --port 10000
+   CUDA_VISIBLE_DEVICES=0 python3 -m sglang.launch_server --model-path LG-Anonym/LlavaGuard-34B --tokenizer-path liuhaotian/llava-v1.6-34b-tokenizer --port 10000
    ```
 #### 2. Perform model inference
 After setting up the server, you can run a Python script to perform inference with LlavaGuard. E.g. 
@@ -80,7 +80,6 @@ The server will respond with the safety assessment for the content provided by t
 **Important Notes:**
 * This version is not compatible with the HF transformer implementation and must be used with SGLang or LLaVA implementation.
 * An HF implementation will follow soon. Contributions are welcome.
-* A suitable [Docker](https://github.com/ml-research/LlavaGuard/blob/main/docker/llavaguard/Dockerfile) image and [training scripts](https://github.com/ml-research/LlavaGuard/tree/main/scripts) are provided in our repository.
 
 ## Methodology
 
@@ -181,7 +180,6 @@ To provide your assessment use the following json template:
 
 ## Evaluation
 We evaluate LlavaGuard on a diverse set of metrics, including balanced accuracy, Recall, and policy exception rate (PER). 
-The evaluation scripts can be found in the [evaluation folder](https://github.com/ml-research/LlavaGuard/blob/main/llavaguard/sglang/evaluation/evaluation_wrapper.py).
 
 <div align="center">
   <img src="figs/metrics.png" width="600"  alt="">
