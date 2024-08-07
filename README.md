@@ -27,7 +27,7 @@ This is the official repo for LlavaGuard, a versatile framework for evaluating t
 
 ## Usage
 The provided LlavaGuard weights are compatible for inference via [SGLang](https://github.com/sgl-project/sglang) as described below. 
-The models are pre-trained on our dataset and can be used for further tuning either via LoRAs or full training. We also provide training scripts in our repository (see scripts).
+The models are pre-trained on our dataset and can be used for further tuning either via LoRAs or full training. We also provide scripts for data preparation/augmentation and training in our repository (see scripts).
 You can use the following [docker file for infernce](https://github.com/sgl-project/sglang/blob/main/docker/Dockerfile). For training, a working LLaVA installation is required, e.g., see our docker file for tuning.
 
 ### Infernce via SGLang
