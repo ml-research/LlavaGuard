@@ -1,15 +1,13 @@
 # LlavaGuard
 *LLAVAGUARD: VLM-based Safeguard for Vision Dataset Curation and Safety Assessment*
 
-This is the anonymous repository for LlavaGuard, a versatile framework for evaluating the safety compliance of visual content. It is designed for both dataset annotation and safeguarding of generative models. The following links provide access to the private & anonymized repositories of the dataset and model weights on Hugging Face.
+This is the anonymous repository for LlavaGuard, a versatile framework for evaluating the safety compliance of visual content. It is designed for both dataset annotation and safeguarding of generative models. In the following we provide access to the private & anonymized repositories of the dataset and model weights on Hugging Face. To access them, please use the following token: "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".
 
-To access them, please use the following token: "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".
-
-
-[[Dataset](https://huggingface.co/datasets/LG-Anonym/LlavaGuard-Dataset)]
-[[LlavaGuard-7B](https://huggingface.co/LG-Anonym/LlavaGuard-7B)]
-[[LlavaGuard-13B](https://huggingface.co/LG-Anonym/LlavaGuard-13B)]
-[[LlavaGuard-34B](https://huggingface.co/LG-Anonym/LlavaGuard-34B)]
+HF Repositories:
+- LG-Anonym/LlavaGuard-Dataset
+- LG-Anonym/LlavaGuard-7B
+- LG-Anonym/LlavaGuard-13B
+- LG-Anonym/LlavaGuard-34B
 
 <div align="center">
   <img src="figs/llavaguard_pipe.png" width="400"  alt="">
