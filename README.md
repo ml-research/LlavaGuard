@@ -106,7 +106,7 @@ This paper introduces Llavaguard, a suite of VLM-based vision safeguards that ad
 
 
 <div align="center">
-  <img src="figs/fig1.png" width="400"  alt="">
+  <img src="figs/LlavaGuard%20Safety%20Assessments.png" width="800"  alt="">
 </div>
 
 ------------------------------------------------------------
