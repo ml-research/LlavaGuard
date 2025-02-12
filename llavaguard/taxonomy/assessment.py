@@ -25,19 +25,19 @@ categories1 = [
     'O8: Animal Cruelty'
 ]
 # policy categories 2
-categories2 = [
-    'O1: Hate, Humiliation, Harassment',
-    'O2: Violence, Harm or Cruelty',
-    'O3: Sexual Content',
-    'O4: Nudity Content',
-    'O5: Criminal Planning',
-    'O6: Illegal Weapons or Substance Abuse',
-    'O7: Self-Harm',
-    'O8: Animal Cruelty',
-    'O9: Disasters or Emergencies',
-    '10: None applying'
-]
+categories2 = ['O1: Hate, Humiliation, Harassment',
+               'O2: Violence, Harm, or Cruelty',
+               'O3: Sexual Content',
+               'O4: Nudity Content',
+               'O5: Criminal Planning',
+               'O6: Weapons or Substance Abuse',
+               'O7: Self-Harm',
+               'O8: Animal Cruelty',
+               'O9: Disasters or Emergencies',
+               'NA: None applying'
+               ]
 
+# policy categories 3
 categories_v3 = [
     'O1: Hate, Humiliation, Harassment',
     'O2: Violence, Harm, or Cruelty',
@@ -89,6 +89,16 @@ mapping_v2 = {
     'Peace or Care': 'NA: None applying',
     'nan': 'NA: None applying',
     'NaN': 'NA: None applying',
+    'NA: None applying': 'NA: None applying',
+    'O1: Hate, Humiliation, Harassment': 'O1: Hate, Humiliation, Harassment',
+    'O2: Violence, Harm, or Cruelty': 'O2: Violence, Harm, or Cruelty',
+    'O3: Sexual Content': 'O3: Sexual Content',
+    'O4: Nudity Content': 'O4: Nudity Content',
+    'O5: Criminal Planning': 'O5: Criminal Planning',
+    'O6: Weapons or Substance Abuse': 'O6: Weapons or Substance Abuse',
+    'O7: Self-Harm': 'O7: Self-Harm',
+    'O8: Animal Cruelty': 'O8: Animal Cruelty',
+    'O9: Disasters or Emergencies': 'O9: Disasters or Emergencies'
 }
 
 
@@ -396,6 +406,90 @@ def get_assessment_json_v13(score, category, explanation=None):
     txt = json.dumps(policy_assessment, indent=4)
     return txt
 
+def get_assessment_rating_only(score, category, explanation=None):
+    mapping = get_mapping('json-v12')
+    cat = mapping[str(category)]
+    if score == 'Non-Violating Exception':
+        assessment, statement = 'Safe', (f'The picture falls into category {cat} of our safety taxonomy that is '
+                                         f'declared as non-violating. It thus complies with our safety standards.')
+    elif 'Acceptable' in score:
+        if cat == 'NA: None applying':
+            assessment, statement = 'Safe', 'This image is compliant with our safety policy.'
+        else:
+            assessment, statement = 'Safe', (
+                f'The image meets the safety guidelines outlined in category {cat} '
+                f'of our safety taxonomy and is considered safe.')
+    else:
+        assessment, statement = 'Unsafe', (f'The image violates category {cat} of our safety taxonomy and '
+                                           f'requires further review.')
+
+    policy_assessment = {
+        "rating": assessment,
+    }
+    # dict to txt
+    txt = json.dumps(policy_assessment, indent=4)
+    return txt
+
+
+def get_assessment_json_v20(score, category, explanation=None):
+    mapping = get_mapping('json-v12')
+    cat = mapping[str(category)]
+    if score == 'Non-Violating Exception':
+        assessment, statement = 'Safe', (f'The picture falls into category {cat} of our safety taxonomy that is '
+                                         f'declared as non-violating. It thus complies with our safety standards.')
+    elif 'Acceptable' in score:
+        if cat == 'NA: None applying':
+            assessment, statement = 'Safe', 'This image is compliant with our safety policy.'
+        else:
+            assessment, statement = 'Safe', (
+                f'The image meets the safety guidelines outlined in category {cat} '
+                f'of our safety taxonomy and is considered safe.')
+    else:
+        assessment, statement = 'Unsafe', (f'The image violates category {cat} of our safety taxonomy and '
+                                           f'requires further review.')
+
+    if explanation is None or explanation == '':
+        raise ValueError('Missing explanation')
+    ex = explanation
+    policy_assessment = {
+        "rating": assessment,
+        "category": cat,
+        "rationale": ex,
+    }
+    # dict to txt
+    txt = json.dumps(policy_assessment, indent=4)
+    return txt
+
+
+def get_assessment_json_v20b(score, category, explanation=None):
+    mapping = get_mapping('json-v12')
+    cat = mapping[str(category)]
+    if score == 'Non-Violating Exception':
+        assessment, statement = 'Safe', (f'The picture falls into category {cat} of our safety taxonomy that is '
+                                         f'declared as non-violating. It thus complies with our safety standards.')
+    elif 'Acceptable' in score:
+        if cat == 'NA: None applying':
+            assessment, statement = 'Safe', 'This image is compliant with our safety policy.'
+        else:
+            assessment, statement = 'Safe', (
+                f'The image meets the safety guidelines outlined in category {cat} '
+                f'of our safety taxonomy and is considered safe.')
+    else:
+        assessment, statement = 'Unsafe', (f'The image violates category {cat} of our safety taxonomy and '
+                                           f'requires further review.')
+
+    if explanation is None or explanation == '':
+        raise ValueError('Missing explanation')
+    ex = explanation
+    policy_assessment = {
+        "rationale": ex,
+        "rating": assessment,
+        "category": cat,
+    }
+    # dict to txt
+    txt = json.dumps(policy_assessment, indent=4)
+    return txt
+
 
 json_template_v0 = f''' Use the following json template to answer:
 {{
@@ -553,7 +647,6 @@ To provide your assessment use the following json template:
 <image>
 '''
 
-
 json_template_v16 = \
     f'''Assessment Steps:
 1. Select a safety "rating". This should be "Unsafe" if the content violates the safety policy; otherwise, it should be "Safe".
@@ -564,7 +657,7 @@ To provide your assessment use the following json template:
     "rating": str<"Unsafe"|"Safe">,
     "category": str<{cat_prompt3}>,
     "rationale": str,
-}}.
+}}
 <image>
 '''
 
@@ -578,6 +671,44 @@ To provide your assessment use the following json template:
     "category": str<{cat_prompt3}>,
     "rationale": str,
     "rating": str<"Unsafe"|"Safe">,
-}}.
+}}
+<image>
+'''
+
+json_template_v20 = \
+    f'''Assessment Steps:
+1. Select a safety "rating". This should be "Unsafe" if the content violates the safety policy; otherwise, it should be "Safe".
+2. Assign a policy "category". If none of the policy categories are applicable, select "NA: None applying".
+3. Provide a "rationale". Describe the user content and justify why it is considered safe or unsafe, referring to the specific policy category and its associated guidelines to illustrate any violations or compliance.
+To provide your assessment use the following json template:
+{{
+    "rating": str<"Unsafe"|"Safe">,
+    "category": str<{cat_prompt3}>,
+    "rationale": str,
+}}
+<image>
+'''
+
+json_template_v20b = \
+    f'''Assessment Steps:
+1. Select a safety "rating". This should be "Unsafe" if the content violates the safety policy; otherwise, it should be "Safe".
+2. Assign a policy "category". If none of the policy categories are applicable, select "NA: None applying".
+3. Provide a "rationale". Describe the user content and justify why it is considered safe or unsafe, referring to the specific policy category and its associated guidelines to illustrate any violations or compliance.
+To provide your assessment use the following json template:
+{{
+    "rationale": str,
+    "rating": str<"Unsafe"|"Safe">,
+    "category": str<{cat_prompt3}>,
+}}
+<image>
+'''
+
+json_template_rating_only = \
+    f'''Assessment Steps:
+1. Select a safety "rating". This should be "Unsafe" if the content violates the safety policy; otherwise, it should be "Safe".
+To provide your assessment use the following json template:
+{{
+    "rating": str<"Unsafe"|"Safe">,
+}}
 <image>
 '''

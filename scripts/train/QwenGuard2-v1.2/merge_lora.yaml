@@ -1,0 +1,14 @@
+### Note: DO NOT use quantized model or quantization_bit when merging lora adapters
+
+### model
+model_name_or_path: Qwen/Qwen2-VL-2B-Instruct
+adapter_name_or_path: /pfss/mlde/workspaces/mlde_wsp_KIServiceCenter/lhelff/ds/LlavaGuard/models/QwenGuard-v1.2-2b-lora-run0/v24
+template: qwen2_vl
+finetuning_type: lora
+trust_remote_code: true
+
+### export
+export_dir: /pfss/mlde/workspaces/mlde_wsp_KIServiceCenter/lhelff/ds/LlavaGuard/models/QwenGuard-v1.2-2b-lora-merged/v24
+export_size: 2
+export_device: cpu
+export_legacy_format: false
