@@ -190,7 +190,7 @@ def load_image():
     return image
 
 
-def convert_llava_to_hf(model_id, pytorch_dump_folder_path, push_to_hub=False, hf_token=None):
+def convert_llava_to_hf(model_id, pytorch_dump_folder_path, push_to_hub=False):
     # load original config
     filepath = hf_hub_download(repo_id=model_id, filename="config.json", repo_type="model")
     # read json
@@ -458,8 +458,8 @@ def convert_llava_to_hf(model_id, pytorch_dump_folder_path, push_to_hub=False, h
     if push_to_hub:
         checkpoint_name = model_id.split("/")[-1]
         print(f"Pushing to repo LukasHug/{checkpoint_name}-hf")
-        model.push_to_hub(f"LukasHug/{checkpoint_name}-hf", token=hf_token)
-        processor.push_to_hub(f"LukasHug/{checkpoint_name}-hf", token=hf_token)
+        model.push_to_hub(f"LukasHug/{checkpoint_name}-hf", token=os.getenv('HF_token'))
+        processor.push_to_hub(f"LukasHug/{checkpoint_name}-hf", token=os.getenv('HF_token'))
 
 
 if __name__ == "__main__":
@@ -478,11 +478,8 @@ if __name__ == "__main__":
         "--pytorch_dump_folder_path", type=str, required=True, help="Path to the output PyTorch model directory."
     )
     parser.add_argument(
-        "--hf_token", type=str, required=True, help="hf token"
-    )
-    parser.add_argument(
         "--push_to_hub", action="store_true", help="Whether or not to push the converted model to the 🤗 hub."
     )
     args = parser.parse_args()
 
-    convert_llava_to_hf(args.model_id, args.pytorch_dump_folder_path, True, args.hf_token)
+    convert_llava_to_hf(args.model_id, args.pytorch_dump_folder_path, True)
