@@ -366,8 +366,8 @@ def convert_llava_to_hf(model_id, pytorch_dump_folder_path, push_to_hub=False):
     if push_to_hub:
         checkpoint_name = model_id.split("/")[-1]
         print(f"Pushing to repo llava-hf/{checkpoint_name}-hf")
-        model.push_to_hub(f"LukasHug/{checkpoint_name}-hf")
-        processor.push_to_hub(f"LukasHug/{checkpoint_name}-hf")
+        model.push_to_hub(f"LG-Anonym/{checkpoint_name}-hf")
+        processor.push_to_hub(f"LG-Anonym/{checkpoint_name}-hf")
 
 
 # if __name__ == "__main__":
@@ -397,7 +397,7 @@ def convert_llava_to_hf(model_id, pytorch_dump_folder_path, push_to_hub=False):
 
 model =     {
         'local_path': f'{local_data_dir}/models/LlavaGuard-v1.2-34b/smid_and_crawled_v2_with_augmented_policies/json-v16-arxiv/llava',
-        'hf_name': 'LukasHug/LlavaGuard-34B-hf',
+        'hf_name': 'LG-Anonym/LlavaGuard-34B-hf',
         'lm': "NousResearch/Nous-Hermes-2-Yi-34B",
         'vm': 'llava-hf/llava-v1.6-34b-hf'
     }

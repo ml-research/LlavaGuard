@@ -478,45 +478,45 @@ def convert_llava_llama_to_hf(text_model_id, vision_model_id, output_hub_path, o
 models = [
     # {
     #     'local_path': f'{local_data_dir}/models/LlavaGuard-v1.1-7b/smid_and_crawled_v2_with_augmented_policies/json-v16-arxiv/llava',
-    #     'hf_name': 'LukasHug/LlavaGuard-7B-hf',
+    #     'hf_name': 'LG-Anonym/LlavaGuard-7B-hf',
     #     'lm': 'lmsys/vicuna-7b-v1.5',
     #     'vm': 'openai/clip-vit-large-patch14-336' 
     # },
     # {
     #     'local_path': f'{local_data_dir}/models/LlavaGuard-v1.1-13b/smid_and_crawled_v2_with_augmented_policies/json-v16-arxiv/llava',
-    #     'hf_name': 'LukasHug/LlavaGuard-13B-hf',
+    #     'hf_name': 'LG-Anonym/LlavaGuard-13B-hf',
     #     'lm': 'meta-llama/Llama-2-13b-hf',
     #     'vm': 'openai/clip-vit-large-patch14-336' 
     # },
     # {
     #     'local_path': f'{local_data_dir}/models/LlavaGuard-v1.2-34b/smid_and_crawled_v2_with_augmented_policies/json-v16-arxiv/llava',
-    #     'hf_name': 'LukasHug/LlavaGuard-34B-hf',
+    #     'hf_name': 'LG-Anonym/LlavaGuard-34B-hf',
     #     'lm': "NousResearch/Nous-Hermes-2-Yi-34B",
     #     'base_model_id': 'liuhaotian/llava-v1.6-34b',
     #     'base_model_hf_id': 'llava-hf/llava-v1.6-34b-hf'
     # },
     {
         'local_path': f'{local_data_dir}/models/LlavaGuard-v1.2-7b-ov/v24/llava',
-        'hf_name': 'LukasHug/LlavaGuard-v1.2-7B-OV-HF',
+        'hf_name': 'LG-Anonym/LlavaGuard-v1.2-7B-OV-HF',
         'lm': "NousResearch/Nous-Hermes-2-Yi-34B",
         'base_model_id': 'lmms-lab/llava-onevision-qwen2-7b-ov',
         'base_model_hf_id': 'llava-hf/llava-onevision-qwen2-7b-ov-hf'
     },
     # {
     #     'local_path': f'{local_data_dir}/models/LlavaGuard-v1.1-7b/LlavaGuard-DS/json-v22-oversampled/llava',
-    #     'hf_name': 'LukasHug/LlavaGuard-v1.1-7B-hf',
+    #     'hf_name': 'LG-Anonym/LlavaGuard-v1.1-7B-hf',
     #     'lm': 'lmsys/vicuna-7b-v1.5',
     #     'vm': 'openai/clip-vit-large-patch14-336' 
     # },
     # {
     #     'local_path': f'{local_data_dir}/models/LlavaGuard-v1.1-13b/LlavaGuard-DS/json-v22-oversampled/llava',
-    #     'hf_name': 'LukasHug/LlavaGuard-v1.1-13B-hf',
+    #     'hf_name': 'LG-Anonym/LlavaGuard-v1.1-13B-hf',
     #     'lm': 'meta-llama/Llama-2-13b-hf',
     #     'vm': 'openai/clip-vit-large-patch14-336' 
     # },
     # {
     #     'local_path': f'{local_data_dir}/models/LlavaGuard-v1.2-34b/LlavaGuard-DS/json-v22-oversampled/llava',
-    #     'hf_name ': 'LukasHug/LlavaGuard-v1.1-34B-hf',
+    #     'hf_name ': 'LG-Anonym/LlavaGuard-v1.1-34B-hf',
     #     'lm': "NousResearch/Nous-Hermes-2-Yi-34B",
     #     'vm': 'llava-hf/llava-v1.6-34b-hf'
     # }

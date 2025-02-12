@@ -89,12 +89,12 @@ def prepare_model_for_sglang(model_dir: str):
     if os.path.exists(model_dir):
         model_name = model_dir.split('models/')[-1].split('/')[0]
         sglang_dir = model_dir
-    elif 'AIML' in model_dir:
+    elif 'LG-Anonym' in model_dir:
         model_name, sglang_dir = model_dir.split('/')[-1], model_dir
     else:
         raise Exception(f'Model not found! {model_dir}')
     
-    if 'LlavaGuard-v' in model_dir and 'AIML' not in model_dir:
+    if 'LlavaGuard-v' in model_dir and 'LG-Anonym' not in model_dir:
         if os.path.exists(model_dir):
             # prepare server command
             sglang_dir = f'{model_dir}/llava'

@@ -1,10 +1,6 @@
 # LlavaGuard
 *LLAVAGUARD: VLM-based Safeguard for Vision Dataset Curation and Safety Assessment*
 
-This is the official repository for [LlavaGuard](https://arxiv.org/abs/2406.05113), a versatile framework for evaluating visual content safety compliance. LlavaGuard is designed for both dataset annotation and safeguarding generative models.
-
-📄 [Project Page](https://ml-research.github.io/human-centered-genai/projects/llavaguard/index.html)  
-🤗 [Hugging Face Models](https://huggingface.co/collections/AIML-TUDA/llavaguard-665b42e89803408ee8ec1086)
 This is the anonymous repository for LlavaGuard, a versatile framework for evaluating the safety compliance of visual content. It is designed for both dataset annotation and safeguarding of generative models. In the following we provide access to the private & anonymized repositories of the dataset and model weights on Hugging Face. To access them, please use the following token: "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".
 
 HF Repositories:
@@ -106,7 +102,7 @@ Our different taxonomies and augmentation techniques can be found in `llavaguard
 LlavaGuard is a family of VLM-based safeguard models, which offers a versatile framework for evaluating the safety compliance of visual content. Specifically, we designed LlavaGuard for dataset annotation and generative model safeguarding. To this end, we collected and annotated a high-quality visual dataset incorporating a broad safety taxonomy, which we use to tune VLMs on context-aware safety risks. As a key innovation, LlavaGuard's responses contain comprehensive information, including a safety rating, the violated safety categories, and an in-depth rationale. Further, our introduced customizable taxonomy categories enable the context-specific alignment of LlavaGuard to various scenarios. Our experiments highlight the capabilities of LlavaGuard in complex and real-world applications. We provide checkpoints ranging from 7B to 34B parameters demonstrating state-of-the-art performance, with even the smallest models outperforming baselines like GPT-4. We make our dataset and model weights publicly available and invite further research to address the diverse needs of communities and contexts.
 
 <div align="center">
-  <img src="figs/fig1.png" width="400"  alt="">
+  <img src="figs/LlavaGuard Safety Assessments.png" width="800"  alt="">
 </div>
 
 

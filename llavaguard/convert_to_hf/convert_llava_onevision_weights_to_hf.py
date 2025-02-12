@@ -198,10 +198,10 @@ def convert_llava_to_hf(model_id, pytorch_dump_folder_path, push_to_hub=False):
         data = json.load(f)
         print(data)
 
-    if model_id in ["lmms-lab/llava-onevision-qwen2-0.5b-ov", "lmms-lab/llava-onevision-qwen2-0.5b-si", "LukasHug/LlavaGuard-v1.2-0.5B-OV"]:
+    if model_id in ["lmms-lab/llava-onevision-qwen2-0.5b-ov", "lmms-lab/llava-onevision-qwen2-0.5b-si", "LG-Anonym/LlavaGuard-v1.2-0.5B-OV"]:
         text_model_id = "Qwen/Qwen2-0.5B-Instruct"
     elif model_id in [
-        "LukasHug/LlavaGuard-v1.2-7B-OV",
+        "LG-Anonym/LlavaGuard-v1.2-7B-OV",
         "lmms-lab/llava-onevision-qwen2-7b-si",
         "lmms-lab/llava-onevision-qwen2-7b-ov-chat",
     ]:
@@ -336,7 +336,7 @@ def convert_llava_to_hf(model_id, pytorch_dump_folder_path, push_to_hub=False):
                 dtype=torch.float32,
                 device=device,
             )
-        elif model_id == "LukasHug/LlavaGuard-v1.2-0.5B-OV":
+        elif model_id == "LG-Anonym/LlavaGuard-v1.2-0.5B-OV":
             # Not yet checked against reference
             expected_slice = torch.tensor(
                 [[-12.0234, -14.3828, -12.7500], [2.3594, 1.0000, 3.9336], [3.6582, 4.7148, 9.1172]],
@@ -350,7 +350,7 @@ def convert_llava_to_hf(model_id, pytorch_dump_folder_path, push_to_hub=False):
                 dtype=torch.float32,
                 device=device,
             )
-        elif model_id == "LukasHug/LlavaGuard-v1.2-7B-OV":
+        elif model_id == "LG-Anonym/LlavaGuard-v1.2-7B-OV":
             # Not yet checked against reference
             expected_slice = torch.tensor(
                 [[1.8496, 3.4219, 1.3135], [3.0996, 3.0117, 3.1484], [4.2422, 4.7109, 9.9688]],
@@ -404,11 +404,11 @@ def convert_llava_to_hf(model_id, pytorch_dump_folder_path, push_to_hub=False):
 
     if model_id == "lmms-lab/llava-onevision-qwen2-0.5b-si":
         expected_text = "system\nYou are a helpful assistant.\nuser\n\nWhat is shown in this image?\nassistant\nThe image is a radar chart that shows the performance of different algorithms or models in a specific domain, such as image classification or natural language processing. The chart is color-coded to represent different algorithms, with each color corresponding to a specific algorithm. The algorithms are labeled as BLIP-2, InstructBLIP, Owen-VL-Chat, and LLaVA-1.5. The chart also includes a legend at the bottom that explains the color coding and the algorithms represented."
-    elif model_id == "LukasHug/LlavaGuard-v1.2-0.5B-OV":
+    elif model_id == "LG-Anonym/LlavaGuard-v1.2-0.5B-OV":
         expected_text = "system\nYou are a helpful assistant.\nuser\n\nWhat is shown in this image?\nassistant\nThe image is a radar chart that compares the performance of different models in a specific task, likely related to natural language processing or machine learning. The chart is divided into different categories, each represented by a different color and labeled with the name of the model or technique used. The models are evaluated based on their performance metrics, such as BLEU-2, InstructBLIP, Qwen-VL-Chat, and LLaVA-1.5. The radar chart helps to visualize the relative"
     elif model_id == "lmms-lab/llava-onevision-qwen2-7b-si":
         expected_text = "system\nYou are a helpful assistant.\nuser\n\nWhat is shown in this image?\nassistant\nThis image is a radar chart that compares the performance of different models on various metrics. The models being compared are BLIP-2, InstructBLIP, and Qwen-VL-Chat. The metrics being compared are VQA, QA, GQA, VQA-av2, and VQA-av2. The chart shows that BLIP-2 performs the best on all metrics, followed by InstructBLIP and Qwen-VL-Chat."
-    elif model_id == "LukasHug/LlavaGuard-v1.2-7B-OV":
+    elif model_id == "LG-Anonym/LlavaGuard-v1.2-7B-OV":
         expected_text = "system\nYou are a helpful assistant.\nuser\n\nWhat is shown in this image?\nassistant\nThe image shows a radar chart, also known as a spider chart or a star chart, which is used to compare multiple quantitative variables. Each axis represents a different variable, and the chart is filled with data points that represent the performance or values of different entities across these variables.\n\nIn this particular radar chart, the variables are represented on the axes, and the performance of different models or systems is shown by the lines connecting the data points. The models or systems are labeled along the bottom of the chart,"
     elif model_id == "lmms-lab/llava-onevision-qwen2-72b-si":
         expected_text = "system\nYou are a helpful assistant.\nuser\n\nWhat is shown in this image?\nassistant\nThe image shows a radar chart, which is a graphical method of displaying multivariate data in the form of a two-dimensional chart of three or more quantitative variables represented on axes starting from the same point. The chart is used to compare the performance of different models or systems across various benchmarks or metrics.\n\nIn this specific radar chart, there are multiple axes, each representing a different benchmark or metric, such as VQA2, GQA, TextVQA, and others. The chart includes several colored lines"
@@ -457,9 +457,9 @@ def convert_llava_to_hf(model_id, pytorch_dump_folder_path, push_to_hub=False):
 
     if push_to_hub:
         checkpoint_name = model_id.split("/")[-1]
-        print(f"Pushing to repo LukasHug/{checkpoint_name}-hf")
-        model.push_to_hub(f"LukasHug/{checkpoint_name}-hf", token=os.getenv('HF_token'))
-        processor.push_to_hub(f"LukasHug/{checkpoint_name}-hf", token=os.getenv('HF_token'))
+        print(f"Pushing to repo LG-Anonym/{checkpoint_name}-hf")
+        model.push_to_hub(f"LG-Anonym/{checkpoint_name}-hf", token=os.getenv('HF_token'))
+        processor.push_to_hub(f"LG-Anonym/{checkpoint_name}-hf", token=os.getenv('HF_token'))
 
 
 if __name__ == "__main__":
@@ -467,10 +467,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model_id",
         help="Hub location of the model to convert",
-        default="LukasHug/LlavaGuard-v1.2-0.5B-OV",
+        default="LG-Anonym/LlavaGuard-v1.2-0.5B-OV",
         choices=[
-            "LukasHug/LlavaGuard-v1.2-7B-OV",
-            "LukasHug/LlavaGuard-v1.2-0.5B-OV",
+            "LG-Anonym/LlavaGuard-v1.2-7B-OV",
+            "LG-Anonym/LlavaGuard-v1.2-0.5B-OV",
         ],
         required=False,
     )

@@ -47,7 +47,7 @@ def prepare_model_as_sglang(model_dir: str, model_name: str):
 
 def launch_server_and_run_funct(model_dir: str, device, function, function_kwargs, HF_HOME: str = None):
     print(f"Evaluating model: {model_dir}")        
-    if 'LlavaGuard-v' in model_dir and 'AIML' not in model_dir:
+    if 'LlavaGuard-v' in model_dir and 'LG-Anonym' not in model_dir:
         if os.path.exists(f"{model_dir}"):
             # prepare model as sglang
             model_name = model_dir.split('models/')[-1].split('/')[0]

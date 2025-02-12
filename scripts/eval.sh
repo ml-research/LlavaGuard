@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # LlavaGuard model output directories
-MODEL="AIML-TUDA/LlavaGuard-v1.2-0.5B-OV"
+MODEL="LG-Anonym/LlavaGuard-v1.2-0.5B-OV"
 
 # Data paths
 data_pth2="/pfss/mlde/workspaces/mlde_wsp_KIServiceCenter/lhelff/ds/LlavaGuard/data/LlavaGuard-DS/v24/test.json"

@@ -112,8 +112,8 @@ if __name__ == '__main__':
     else:
         output_dir = '/workspace/output/generated_ds/'
 
-    ds_name = 'AIML-TUDA/i2p'
-    ds_hold_out = 'AIML-TUDA/i2p-adversarial-split'
+    ds_name = 'LG-Anonym/i2p'
+    ds_hold_out = 'LG-Anonym/i2p-adversarial-split'
     # load hugface data
     ds = load_dataset(ds_name, split='train')
     ds_hold_out = load_dataset(ds_hold_out, split='train')
