@@ -8,8 +8,8 @@ This is the official repository for [LlavaGuard](https://arxiv.org/abs/2406.0511
 
 ### Model Repositories
 - [AIML-TUDA/LlavaGuard-Dataset](https://huggingface.co/AIML-TUDA/LlavaGuard-Dataset)
-- [AIML-TUDA/LlavaGuard-v1.2-0.5B-OV](https://huggingface.co/AIML-TUDA/LlavaGuard-v1.2-0.5B-OV)
-- [AIML-TUDA/LlavaGuard-v1.2-7B-OV](https://huggingface.co/AIML-TUDA/LlavaGuard-v1.2-7B-OV)
+- [AIML-TUDA/LlavaGuard-v1.2-0.5B-OV](https://huggingface.co/AIML-TUDA/LlavaGuard-v1.2-0.5B-OV), [AIML-TUDA/LlavaGuard-v1.2-0.5B-OV-hf](https://huggingface.co/AIML-TUDA/LlavaGuard-v1.2-0.5B-OV-hf)
+- [AIML-TUDA/LlavaGuard-v1.2-7B-OV](https://huggingface.co/AIML-TUDA/LlavaGuard-v1.2-7B-OV), [AIML-TUDA/LlavaGuard-v1.2-7B-OV-hf](https://huggingface.co/AIML-TUDA/LlavaGuard-v1.2-7B-OV-hf)
 
 <div align="center">
   <img src="figs/llavaguard_pipe.png" width="600" alt="LlavaGuard Pipeline">
