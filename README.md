@@ -116,14 +116,13 @@ This paper introduces Llavaguard, a suite of VLM-based vision safeguards that ad
 If you use LlavaGuard for your research, please cite our paper:
 
 ```
-@incollection{helff2024llavaguard, 
-            crossref = { https://ml-research.github.io/human-centered-genai/projects/llavaguard/index.html }, 
-            key = { Best Runner-Up Paper Award at NeurIPS RBFM 2024 }, 
-            booktitle = { Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops and Working Notes of the NeurIPS 2024 Workshop on Responsibly Building the Next Generation of Multimodal Foundational Models (RBFM) }, 
-            year = { 2024 }, 
-            author = { Lukas Helff and Felix Friedrich and Manuel Brack and Patrick Schramowski and Kristian Kersting }, 
-            title = { LLAVAGUARD: VLM-based Safeguard for Vision Dataset Curation and Safety Assessment }
-}
+@inproceedings{helff2025llavaguard,
+ title = {LlavaGuard: An Open VLM-based Framework for Safeguarding Vision Datasets and Models},
+ booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
+ author = {Lukas Helff and Felix Friedrich and Manuel Brack and Patrick Schramowski and Kristian Kersting},
+ year= {2025}
+ }
+
 ```
 
 ------------------------------------------------------------
